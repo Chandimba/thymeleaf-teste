@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template}">
+<head>
+    <title>AdminLTE 3 | Dashboard</title>
+</head>
+<body >
+    <div class="content-wrapper" layout:fragment="content">
+        <p style="margin: 0 20px; padding-top: 10px;"> Nada para escrever</p>
+    </div>
+
+    <th:block th:replace="scripts">
+        <!-- jQuery -->
+        <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+        <!-- Bootstrap 4 -->
+        <script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <!-- AdminLTE App -->
+        <script th:src="@{/dist/js/adminlte.min.js}"></script>
+    </th:block>
+</body>
+</html>

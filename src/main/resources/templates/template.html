@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/dist/css/adminlte.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <div th:replace="~{header :: header}"></div>
+
+        <!-- /.navbar -->
+
+        <div th:replace="~{aside-menu}"></div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <section class="content-wrapper" layout:fragment="content">
+            <p>This is filled by the content template.</p>
+        </section>
+        <!-- /.content-wrapper -->
+
+        <div th:replace="~{footer :: footer}"></div>
+
+    </div>
+<!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap 4 -->
+    <script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/dist/js/adminlte.min.js}"></script>
+
+    <th:block layout:fragment="scripts"/>
+    <!-- REQUIRED SCRIPTS -->
+    <script>
+        var currentPage = location.href.match(/(.*?)([^\/]+)$/);
+
+        if(currentPage == null) {
+            var tag = $('.left-menu .nav-item a.nav-link')[0];
+            $(tag).addClass('active');
+        } else {
+            var tagsAs = $('.left-menu .nav-item a.nav-link');
+            $.each(tagsAs, function (index, tag){
+                var href = $(tag).attr('href');
+
+                if(currentPage[0].endsWith(href)) {
+                    $(tag).addClass('active');
+                    console.log(href);
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>
